@@ -1,0 +1,7 @@
+\section{连续性概念}
+\begin{problem}
+    设$f$为区间$I$上的单调函数,证明:若$x_0\in I$为$f$的间断点,则$x_0$必是$f$的第一类间断点.
+\end{problem}
+\begin{proof}
+    不妨设$f$在$I$上单调递增,$x_0$在$I$内部.取$x_1\in U^{\circ}_{+}(x_0)$,则$\forall x\in U^{\circ}_{-},f(x)\leq f(x_1)$,即$f(x)$在$U^{\circ}_{-}$有上界,结合单调有界定理可知$\displaystyle\lim_{x\to x_0^-}f(x)$存在;同理,取$x_2\in U^{\circ}_{-}(x_0)$,则$\forall x\in U^{\circ}_{+},f(x)\geq f(x_2)$,即$f(x)$在$U^{\circ}_{+}$有下界,结合单调有界定理可知$\displaystyle\lim_{x\to x_0^+}f(x)$存在.$f(x)$在$x_0$处左右极限均存在,因此$x_0$是$f$的第一类间断点.若$x_0$为$I$的左端点,$\forall x\in U^{\circ}_{+},f(x)\geq f(x_0)$,即$f(x)$在$U^{\circ}_{+}$有下界,结合单调有界定理可知$\displaystyle\lim_{x\to x_0^+}f(x)$存在,从而$x_0$是$f$的第一类间断点,同理可证$x_0$为$I$的右端点的情况.
+\end{proof}

@@ -1,0 +1,43 @@
+% !TeX root = ../main.tex
+\section{连续函数的性质}
+\begin{problem}
+    证明:$\sqrt{x}$在$[0,+\infty)$上一致连续.
+\end{problem}
+\begin{proof}
+    $x\in[0,1]$时,$f(x)$连续,由康托定理,$f(x)$在$[0,1]$上一致连续;$x\in[1,+\infty)$时,$\forall\varepsilon>0,\text{取}\delta=2\varepsilon,\forall x',x''\in[1,+\infty)$,只要$|x'-x''|<\delta$,就有$\displaystyle|\sqrt{x'}-\sqrt{x''}|=\dfrac{|x'-x''|}{\sqrt{x'}+\sqrt{x''}}
+    \leq\dfrac{1}{2}|x'-x''|<\varepsilon$.因此,$\sqrt{x}$在$[0,+\infty)$上一致连续.
+\end{proof}
+\begin{problem}
+设$f$在$[a,\infty)$连续,且$\displaystyle\lim_{x\to +\infty} f(x)$存在.证明:$f$在$[a,\infty)$有界,并且存在最大,最小值.
+\end{problem}
+\begin{proof}
+    设$\displaystyle\lim_{x\to +\infty} f(x)=A$,则$\forall\varepsilon=1,\exists M>0,\forall x\geq M,|f(x)-A|\leq 1\Rightarrow |f(x)\leq |A|+1$; $\forall x\in[a,M]$,由$f$连续和有界性定理,$\exists B>0,\forall x\in[a,M],|f(x)|\leq B$.从而$\forall x\in[a,\infty),|f(x)|\leq\max\{|A|+1,B\}$.下证$f(x)$存在最小值.\\
+    若$f(x)\equiv A$,平凡;若$f(x)\not\equiv A$,则存在$x_0\in[a,\infty),f(x_0)\neq A$,不妨假设$f(x_0)<A$.由$\displaystyle\lim_{x\to +\infty} f(x)=A>f(x_0)$,根据保号性,$\exists N>a,\forall x\geq N,f(x)\geq f(x_0)\Rightarrow x_0\in[a,N]$.\\
+    一方面,根据$f(x)$在$[a,N]$连续,$\exists\xi\in[a,N],f(x)\geq f(\xi)$;另一方面,$\forall x\in[N,+\infty),f(\xi)\leq f(x_0)<f(x)$.从而$\forall x\in[a,+\infty),f(\xi)\leq f(x)$,因此存在最小值.同理可证$f(x)$存在最大值.
+\end{proof}
+\begin{problem}
+    证明;任一实系数奇次方程至少有一个实根.
+\end{problem}
+\begin{proof}
+    设$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0(a_n\neq0,n\text{为奇数})$,则$\displaystyle\lim_{x\to\infty}\dfrac{f(x)}{x^n}=a_n>0\Rightarrow\exists M>0,\forall |x|\geq M,\left|\dfrac{f(x)}{x^n}\right|>0\Rightarrow \dfrac{f(M)}{M^n}>0,\dfrac{f(-M)}{(-M)^n}>0\Rightarrow f(M)>0,f(-M)<0$,由根的存在定理,$f(x)$至少有一个实根.
+\end{proof}
+\begin{problem}
+    设$f$在$[a,\infty)$连续,且$\displaystyle\lim_{x\to +\infty} f(x)$存在.证明$f$在$[a,+\infty)$上一致连续.
+\end{problem}
+\begin{proof}
+    $\displaystyle\lim_{x\to +\infty} f(x)\text{存在}\Rightarrow$由柯西收敛准则,$\forall\varepsilon>0,\exists M>0,\forall x',x''>M,|f(x)-f(x'')|<\varepsilon$;$f$在[a,M+1]连续,由康托定理,$f$在[a,M+1]一致连续,即$\exists \delta\in(0,1),\forall x',x''\in[a,M+1]$,只要$|x'-x''|<\delta$,就有$|f(x)-f(x'')|<\varepsilon$.于是$\forall x\in[a,+\infty)$,满足$|x'-x''|<\delta$,$x',x''$要么同属于$[a,M+1]$,要么同属于$[M,+\infty)$,但总有$|f(x)-f(x'')|<\varepsilon$.因此,$f$在$[a,+\infty)$上一致连续.\\
+    \begin{tikzpicture}[>=Stealth, radius=0.3mm]
+    \draw[->] (-1cm,0) -- (4cm,0) node[below]{$+\infty$};
+    \fill (0,0)      circle node[below]{$a$}
+        (0.9cm,0)  circle coordinate (x')
+        (1.5cm,0)  circle node[below]{$M$} coordinate (M)
+        (1.8cm,0)  circle coordinate (x'')
+        (2.1cm,0)  circle coordinate (x)
+        (3cm,0)  circle coordinate (y)      
+        (2.5cm,0)    circle node[below]{$M+1$} coordinate (M+1);
+    \draw[pattern=north east lines] (x') -- +(0,4mm) -|  
+        (x'') node[pos=0.25, above]{$[x',x'']$};
+    \draw[pattern=north east lines,pattern color=red] (x) -- +(0,4mm) -|  
+        (y) node[pos=0.25, above]{$[x',x'']$};
+    \end{tikzpicture}
+\end{proof}

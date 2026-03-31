@@ -1,0 +1,44 @@
+\documentclass[11pt]{whatsnote}
+
+\usepackage[UTF8]{ctex}
+\setlength{\parindent}{2em}
+
+\usepackage{circuitikz}
+
+\coverset{
+  title   = Mathematical Analysis,
+  author  = \ttfamily \textsc{Decheng Fang},
+  afill   = UG @CQNU,
+  date    = November 2025,
+  extinfo = {\includegraphics[width = .1\paperwidth]{myhsia_seal}},
+  head    = universe.pdf,
+  clogo   = cat.pdf,
+  llogos  = {mouse1.png, mouse2.png,
+             mouse4.png, mouse5.png}
+}
+
+\begin{document}
+
+\maketitle[purple!50!green]
+\frontmatter
+\tableofcontents
+\mainmatter
+
+\include{./context/1_.tex}
+
+\newcommand \sectionname {Lecture \#}
+\appendix
+\sidefoot \thepage
+\fancyhead[OL, ER]{Decheng Fang (CQNU ID: 2023051507119)}
+\fancyhead[EL]{\sffamily \rightmark}
+\fancyhead[OR]{\fontfamily{lmr}\selectfont<<\texttt{\href{mailto:2023051507119@stu.cqnu.edu.cn}{2023051507119@stu.cqnu.edu.cn}}>>}
+\addcontentsline{toc}{chapter}{Problem Set}
+\renewcommand *\thesection{\sectionname \arabic{section}}
+\renewcommand*\familydefault {\sfdefault}
+\newweek
+
+\include{./context/assignment1.tex}
+\include{./context/assignment2.tex}
+\include{context/assignment3.tex}
+
+\end{document}
