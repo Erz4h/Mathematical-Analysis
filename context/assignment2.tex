@@ -21,23 +21,3 @@
 \begin{proof}
     设$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0(a_n\neq0,n\text{为奇数})$,则$\displaystyle\lim_{x\to\infty}\dfrac{f(x)}{x^n}=a_n>0\Rightarrow\exists M>0,\forall |x|\geq M,\left|\dfrac{f(x)}{x^n}\right|>0\Rightarrow \dfrac{f(M)}{M^n}>0,\dfrac{f(-M)}{(-M)^n}>0\Rightarrow f(M)>0,f(-M)<0$,由根的存在定理,$f(x)$至少有一个实根.
 \end{proof}
-\begin{problem}
-    设$f$在$[a,\infty)$连续,且$\displaystyle\lim_{x\to +\infty} f(x)$存在.证明$f$在$[a,+\infty)$上一致连续.
-\end{problem}
-\begin{proof}
-    $\displaystyle\lim_{x\to +\infty} f(x)\text{存在}\Rightarrow$由柯西收敛准则,$\forall\varepsilon>0,\exists M>0,\forall x',x''>M,|f(x)-f(x'')|<\varepsilon$;$f$在[a,M+1]连续,由康托定理,$f$在[a,M+1]一致连续,即$\exists \delta\in(0,1),\forall x',x''\in[a,M+1]$,只要$|x'-x''|<\delta$,就有$|f(x)-f(x'')|<\varepsilon$.于是$\forall x\in[a,+\infty)$,满足$|x'-x''|<\delta$,$x',x''$要么同属于$[a,M+1]$,要么同属于$[M,+\infty)$,但总有$|f(x)-f(x'')|<\varepsilon$.因此,$f$在$[a,+\infty)$上一致连续.\\
-    \begin{tikzpicture}[>=Stealth, radius=0.3mm]
-    \draw[->] (-1cm,0) -- (4cm,0) node[below]{$+\infty$};
-    \fill (0,0)      circle node[below]{$a$}
-        (0.9cm,0)  circle coordinate (x')
-        (1.5cm,0)  circle node[below]{$M$} coordinate (M)
-        (1.8cm,0)  circle coordinate (x'')
-        (2.1cm,0)  circle coordinate (x)
-        (3cm,0)  circle coordinate (y)      
-        (2.5cm,0)    circle node[below]{$M+1$} coordinate (M+1);
-    \draw[pattern=north east lines] (x') -- +(0,4mm) -|  
-        (x'') node[pos=0.25, above]{$[x',x'']$};
-    \draw[pattern=north east lines,pattern color=red] (x) -- +(0,4mm) -|  
-        (y) node[pos=0.25, above]{$[x',x'']$};
-    \end{tikzpicture}
-\end{proof}

@@ -101,6 +101,7 @@ $\varepsilon - \delta$语言:$\forall \varepsilon>0,\exists \delta>0,\forall x\i
     则称函数$f$在区间$I$上一致连续.
 \end{definition}
 上述定义说明如果$f$在区间$I$上一致连续,那么$f$在区间$D\subseteq I$上也一致连续.
+函数$f$在区间$I$上不一致连续:$\exists \varepsilon_0>0,\forall\delta>0,\exists x',x''\in I$,满足$|x'-x''|<\delta$,但$|f(x')-f(x'')|\geq\varepsilon_0$.
 \begin{theorem}
     函数$f(x)$定义在区间$I$上.$f(x)$在$I$上一致连续的充要条件为:对任何数列$\{x_n\},\{y_n\}\subset I$,若$\displaystyle\lim_{n\to\infty}(x_n-y_n)=0$,则
     \begin{equation*}
@@ -115,6 +116,26 @@ $\varepsilon - \delta$语言:$\forall \varepsilon>0,\exists \delta>0,\forall x\i
     若函数$f$在$[a,b]$连续,则$f$在$[a,b]$一致连续.
 \end{theorem}
 \begin{theorem}
+    设$f$在$[a,\infty)$连续,且$\displaystyle\lim_{x\to +\infty} f(x)$存在.证明$f$在$[a,+\infty)$上一致连续.
+\end{theorem}
+\begin{proof}
+    $\displaystyle\lim_{x\to +\infty} f(x)\text{存在}\Rightarrow$由柯西收敛准则,$\forall\varepsilon>0,\exists M>0,\forall x',x''>M,|f(x)-f(x'')|<\varepsilon$;$f$在[a,M+1]连续,由康托定理,$f$在[a,M+1]一致连续,即$\exists \delta\in(0,1),\forall x',x''\in[a,M+1]$,只要$|x'-x''|<\delta$,就有$|f(x)-f(x'')|<\varepsilon$.于是$\forall x\in[a,+\infty)$,满足$|x'-x''|<\delta$,$x',x''$要么同属于$[a,M+1]$,要么同属于$[M,+\infty)$,但总有$|f(x)-f(x'')|<\varepsilon$.因此,$f$在$[a,+\infty)$上一致连续.\\
+    \begin{tikzpicture}[>=Stealth, radius=0.3mm]
+    \draw[->] (-1cm,0) -- (4cm,0) node[below]{$+\infty$};
+    \fill (0,0)      circle node[below]{$a$}
+        (0.9cm,0)  circle coordinate (x')
+        (1.5cm,0)  circle node[below]{$M$} coordinate (M)
+        (1.8cm,0)  circle coordinate (x'')
+        (2.1cm,0)  circle coordinate (x)
+        (3cm,0)  circle coordinate (y)      
+        (2.5cm,0)    circle node[below]{$M+1$} coordinate (M+1);
+    \draw[pattern=north east lines] (x') -- +(0,4mm) -|  
+        (x'') node[pos=0.25, above]{$[x',x'']$};
+    \draw[pattern=north east lines,pattern color=red] (x) -- +(0,4mm) -|  
+        (y) node[pos=0.25, above]{$[x',x'']$};
+    \end{tikzpicture}
+\end{proof}
+\begin{theorem}
     设区间$I_1$的右端点为$c\in I_1$,区间$I_2$的左端点为$c\in I_2$.若$f$分别在$I_1$和$I_2$上一致连续,则$f$在$I=I_1\cup I_2$上也一致连续.
 \end{theorem}
 \begin{proof}
@@ -127,3 +148,33 @@ $\varepsilon - \delta$语言:$\forall \varepsilon>0,\exists \delta>0,\forall x\i
     \end{enumerate}
     因此$f$在$I=I_1\cup I_2$上也一致连续.
 \end{proof}
+\begin{theorem}
+    设函数$f$在$(a,b)$连续,则$f$在$(a,b)$上一致连续的充分必要条件是$\displaystyle\lim_{x\to a^+} f(x)$和$\displaystyle\lim_{x\to b^-} f(x)$均存在.
+\end{theorem}
+\begin{proof}
+    充分性:补充定义,设$f(a)=\displaystyle\lim_{x\to a^+} f(x)$,$f(b)=\displaystyle\lim_{x\to b^-} f(x)$,则$f$在$[a,b]$上连续,由康托定理,$f$在$[a,b]$上一致连续,从而在$(a,b)$上一致连续.\\
+    必要性:$f\in C_{unif}(a,b)\Longrightarrow\forall\varepsilon>0,\exists\delta\in(0,b-a),\forall x',x''\in(a,b)$,只要$|x'-x''|<\delta$,就有$|f(x')-f(x'')|<\varepsilon$.$\forall\varepsilon>0,\exists\delta>0,\forall x'.x''\in(a,a+\delta)$,自然满足$|x'-x''|<\delta$,从而$|f(x')-f(x'')|<\varepsilon$,这说明$f(x)$在$x\to a^+$时满足柯西收敛准则,因此$\displaystyle\lim_{x\to a^+} f(x)$存在.同理可证$\displaystyle\lim_{x\to b^-} f(x)$存在.
+\end{proof}
+注意上述定理要求$(a,b)$为有限区间.
+\begin{definition}
+    设函数$f$定义在区间$I$上.若存在常数$L>0$,使得对任何$x',x''\in I$,都有
+    \begin{equation*}
+        |f(x')-f(x'')|\leq L|x'-x''|,
+    \end{equation*}
+    则称函数$f$在区间$I$上满足利普希茨条件.
+\end{definition}
+显然满足利普希茨条件的函数在区间$I$上一致连续.
+\begin{theorem}
+    设函数$f$在区间$I$上可导,且$f'(x)$在$I$上有界,则$f$在$I$上一致连续.
+\end{theorem}
+\begin{proof}
+    $\forall x',x''\in I$,由拉格朗日中值定理,存在$\xi\in I$,使得
+    \begin{equation*}
+        |f(x')-f(x'')|=|f'(\xi)||x'-x''|\leq L|x'-x''|,
+    \end{equation*}
+    因此$f$在$I$上满足利普希茨条件,从而在$I$上一致连续.
+\end{proof}
+注意$f'(x)$在$I$上无界,不能够得到$f(x)$在$I$上不一致连续.下面的定理给出了正确的结论.
+\begin{theorem}
+    设函数$f$在$[a,+\infty)$可导,且$\displaystyle\lim_{x\to +\infty} f'(x)=\infty$,则$f$在$[a,+\infty)$上不一致连续.
+\end{theorem}
